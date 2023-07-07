@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono&family=Play:wght@400;700&family=Russo+One&family=Ysabeau+Office:wght@1&display=swap');
+
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Russo One', sans-serif;
+	text-align: center;
+
+}
+
+body {
+	background-image: url(/img/back.jpg);
+	background-size: cover;
+	color: white;
+}
+
+header {
+	font-size: 30px;
+	padding: 40px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 160px;
+	font-size: 25px;
+}
+
+.menu {
+
+	margin: auto;
+}
+
+.btn {
+	background-color: rgb(62, 65, 75);
+	color: white;
+	margin: 30px auto;
+	padding: 8px;
+	width: 250px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.btn:hover {
+	scale: 1.1;
+	transition: 0.2s;
+}
+
+.game-header {
+	display: flex;
+	align-items: center;
+}
+
+.reset {
+	width: 120px;
+}
+
+.lvl {
+	flex-grow: 1;
+	text-align: left;
+}
+
+.null {
+	padding-top: 0;
+}
+
+.game-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+	justify-content: center;
+}
+
+.card {
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	background-size: cover;
+	background-position: center;
+	background-color: white;
+}
+
+.rotate {
+	transform: perspective(200px) rotateY(180deg);
+	transition: 0.5s;
+}
