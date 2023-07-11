@@ -1,7 +1,23 @@
 import { createCards } from "./cards.js";
 import { createMenu } from "./createMenu.js";
 
+
+const gameWin = () => {
+	const card = document.querySelectorAll(".card");
+	let flag = true;
+	card.forEach(el => {
+		if (!el.classList.contains("rotate")) {
+			flag = false;
+		}
+	})
+	return flag;
+
+}
+
+
 export const createField = (lvl) => {
+	let statusGame = true;
+
 	const main = document.querySelector("main");
 	main.classList.add("null");
 
@@ -46,24 +62,40 @@ export const createField = (lvl) => {
 		gameCards.appendChild(card);
 
 		card.addEventListener('click', () => {
-			console.log(prev);
-			console.log(card);
-			card.classList.add("rotate");
-			card.style.backgroundImage = `url(${el.img})`;
-			if (prev == null) {
-				prev = card;
-			}
-			else {
-				if (prev.style.backgroundImage == card.style.backgroundImage) {
-					prev = null;
+			if (statusGame == true && !card.classList.contains("rotate")) {
+
+				console.log(prev);
+				console.log(card);
+				card.classList.add("rotate");
+				card.style.backgroundImage = `url(${el.img})`;
+				if (prev == null) {
+					prev = card;
 				}
 				else {
-					card.classList.remove("rotate");
-					card.style.backgroundImage = `url(${el.back})`;
-					prev.classList.remove("rotate");
-					prev.style.backgroundImage = `url(${el.back})`;
-					prev = null;
+					if (prev.style.backgroundImage == card.style.backgroundImage) {
+						prev = null;
+						if (gameWin()) {
+							createMenu();
+						}
+
+					}
+					else {
+						statusGame = false;
+						const time = setTimeout(() => {
+
+							card.classList.remove("rotate");
+							card.style.backgroundImage = `url(${el.back})`;
+							prev.classList.remove("rotate");
+							prev.style.backgroundImage = `url(${el.back})`;
+							prev = null;
+							statusGame = true;
+						}, 1000);
+						time;
+
+
+					}
 				}
+
 			}
 		})
 
